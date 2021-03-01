@@ -1,7 +1,7 @@
 <?php
 
-require 'dbConnect.php';
-require 'functions.php';
+include "lib/dbConnect.php";
+include "lib/functions.php";
 loginMi();
 
 ?>

@@ -15,14 +15,34 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
 <h3>Ürün Düzenleme</h3>
 <hr>
 
-<form action="user-operations.php" method="POST">
+<form action="lib/user-operations.php" method="POST">
 
     <div class="form-group">
         <div class="col-md-3">
-            <label for="exampleInputEmail1">Kategori</label>
+            <label for="exampleInputEmail1">Kategori Seç</label>
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="kategori_id" value="<?php echo $productcek['category_id'] ?>">
+            <div class="custom-select">
+                <select name="category_id" class='select2'>
+
+                    <?php
+
+                    $kategorisor = $db->prepare("SELECT * FROM category order by category_id ASC");
+                    $kategorisor->execute();
+
+                    while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+                        <option <?php
+                                if ($kategoricek['category_id'] == $productcek['category_id']) {
+                                    echo "selected";
+                                }
+                                ?> value="<?php echo $kategoricek['category_id'] ?>"><?php echo $kategoricek['category_name'] ?>
+                        </option>
+
+                    <?php } ?>
+
+                </select>
+            </div>
         </div>
     </div>
 
@@ -98,8 +118,11 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
 
     </div>
     </div>
+
+    <input type="hidden" name="product_id" value="<?php echo $productcek['product_id'] ?>">
+
     <div align="right" class="col-md-6">
-        <button type="submit" class="btn btn-primary" name="productedit">Ürün Ekle</button>
+        <button type="submit" class="btn btn-primary" name="productedit">Kaydet</button>
     </div>
 </form>
 

@@ -3,7 +3,7 @@ include "header.php";
 ?>
 
 <!-- Kategori Listesini Göster -->
-<p>Burada kategori listesi ve ürün listesi yer alacak</p>
+<p>Menüden ürün ve kategori listelerini görebilir, üzerlerinde işlem yapabilirsiniz..</p>
 
 
 <?php

@@ -28,7 +28,8 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
     </div>
     <?php } ?>
 
-    <form action="do-login.php" METHOD="post">
+    <form action="lib/do-login.php" METHOD="post">
+    
         <p class="label-username">
             Kullanıcı Adı
         </p>

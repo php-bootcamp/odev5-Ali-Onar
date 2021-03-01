@@ -8,16 +8,31 @@ include "header.php";
 <h3>Ürün Ekleme</h3>
 <hr>
 
-<form action="user-operations.php" method="POST">
+<form action="lib/user-operations.php" method="POST">
 
 
 
-    <div class="form-group">
+<div class="form-group">
         <div class="col-md-3">
-            <label for="exampleInputEmail1">Kategori</label>
+            <label for="exampleInputEmail1">Kategori Seç</label>
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="kategori_id">
+            <div class="custom-select">
+                <select name="category_id" class='select2'>
+
+                    <?php
+
+                    $kategorisor = $db->prepare("SELECT * FROM category order by category_id ASC");
+                    $kategorisor->execute();
+
+                    while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+                        <option value="<?php echo $kategoricek['category_id'] ?>"><?php echo $kategoricek['category_name'] ?></option>
+
+                    <?php } ?>
+
+                </select>
+            </div>
         </div>
     </div>
 

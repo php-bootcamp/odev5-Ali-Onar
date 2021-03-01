@@ -21,10 +21,10 @@ if (isset($_POST['userlogin'])) {
 
         $_SESSION['username'] = $username;
 
-        header("Location:index.php?durum=girisbasarili");
+        header("Location:../index.php?durum=girisbasarili");
         exit;
     } else {
 
-        header("Location:login.php?durum=hata");
+        header("Location:../login.php?durum=hata");
     }
 }

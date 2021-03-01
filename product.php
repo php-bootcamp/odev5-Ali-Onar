@@ -1,9 +1,11 @@
 <?php
 include "header.php";
 
-$productsor = $db->prepare("SELECT * FROM product");
+$productsor = $db->prepare("SELECT product.*, category.* 
+FROM product INNER JOIN category 
+ON product.category_id=category.category_id
+");
 $productsor->execute();
-
 
 ?>
 
@@ -63,9 +65,9 @@ $productsor->execute();
             }
 
             ?></td>
-        <td><?php echo $productcek['category_id'] ?></td>
+        <td><?php echo $productcek['category_name'] ?></td>
         <td><a href="product-edit.php?product_id=<?php echo $productcek['product_id']; ?>"><button class="btn btn-primary btn-sm">Düzenle</button></a></td>
-        <td><a href="user-operations.php?product_id=<?php echo $productcek['product_id']; ?>&productdelete=ok"><button class="btn btn-danger btn-sm">Sil</button></a>
+        <td><a href="lib/user-operations.php?product_id=<?php echo $productcek['product_id']; ?>&productdelete=ok"><button class="btn btn-danger btn-sm">Sil</button></a>
         </td>
 
       </tr>
