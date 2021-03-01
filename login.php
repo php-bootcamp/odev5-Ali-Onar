@@ -45,6 +45,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
         <input type="password" class="input-password" name="password">
         <button type="submit" class="submit" name="userlogin">Giriş Yap</button>
     </form>
+    <p>Kullanıcı Adı: ali<br>Parola: 123456</p>
 </div>
 
 
